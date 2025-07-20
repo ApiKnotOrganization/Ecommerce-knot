@@ -4,9 +4,12 @@ spring:
     datasource:
         url: jdbc:mysql://localhost:4406/KnotOrganizationDatabaseProduct
         username: root
-        password: ${KNOT-PASSWORD-DATABASE}
+        password: ${KNOT_PASSWORD_DATABASE}
         driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
         hibernate:
             ddl-auto: none
         show-sql: false
+    liquibase:
+        change-log: classpath:db/changelog/db.changelog-master.xml
+        clear-checksums: true

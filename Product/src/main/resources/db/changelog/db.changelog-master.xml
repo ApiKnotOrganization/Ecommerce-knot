@@ -4,6 +4,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <changeSet id="1" author="LuisPiquinRey">
-        <sqlFile path="db/migration/V1__create_table_products.sql" relativeToChangelogFile="false" />
+        <sqlFile path="db/migration/V1__create_table_product.sql" relativeToChangelogFile="false" />
     </changeSet>
 </databaseChangeLog>
