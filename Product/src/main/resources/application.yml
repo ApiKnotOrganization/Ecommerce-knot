@@ -1,6 +1,9 @@
 spring:
     application:
         name: Product
+    output:
+        ansi:
+            enabled: always
     datasource:
         url: jdbc:mysql://localhost:4406/KnotOrganizationDatabaseProduct
         username: root
