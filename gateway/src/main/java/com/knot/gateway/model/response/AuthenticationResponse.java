@@ -1,5 +1,8 @@
 package com.knot.gateway.model.response;
 
+import lombok.Getter;
+
+@Getter
 public class AuthenticationResponse {
     private final String jwt;
 
@@ -7,7 +10,4 @@ public class AuthenticationResponse {
         this.jwt = jwt;
     }
 
-    public String getJwt() {
-        return jwt;
-    }
 }

@@ -1,7 +1,8 @@
 package com.knot.gateway.service;
 
+import com.knot.gateway.mapper.UserMapper;
 import com.knot.gateway.model.User;
-import com.knot.gateway.model.request.UserDTO;
+import com.knot.gateway.model.dto.UserDTO;
 import com.knot.gateway.model.response.ValidationResponse;
 import com.knot.gateway.repository.UserRepository;
 import com.knot.gateway.util.ValidationUtil;
@@ -11,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 @Service
 public class UserService {
@@ -21,24 +21,16 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User save(UserDTO user) {
+    public UserDTO save(UserDTO user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User appUser = User.builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .role(user.getRole())
-                .first_name(user.getFirst_name())
-                .last_name(user.getLast_name())
-                .email(user.getEmail())
-                .phone_country_code(user.getPhone_country_code())
-                .phone_number(user.getPhone_number())
-                .build();
-        return userRepository.save(appUser);
+        User appUser = UserMapper.INSTANCE.toEntity(user);
+        return UserMapper.INSTANCE.toDTO(userRepository.save(appUser));
     }
 
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username)
+    public UserDTO findByUsername(String username) {
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+        return UserMapper.INSTANCE.toDTO(user);
     }
 
     public ValidationResponse validateUserSignUp(UserDTO user) {

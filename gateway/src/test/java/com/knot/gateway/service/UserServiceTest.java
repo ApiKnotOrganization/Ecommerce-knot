@@ -1,7 +1,7 @@
 package com.knot.gateway.service;
 
 import com.knot.gateway.model.User;
-import com.knot.gateway.model.request.UserDTO;
+import com.knot.gateway.model.dto.UserDTO;
 import com.knot.gateway.model.response.ValidationResponse;
 import com.knot.gateway.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;

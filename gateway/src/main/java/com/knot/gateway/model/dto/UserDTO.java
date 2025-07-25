@@ -1,4 +1,4 @@
-package com.knot.gateway.model.request;
+package com.knot.gateway.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
